@@ -2,7 +2,6 @@ package org.lessons.java.best_of_the_year.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.lessons.java.best_of_the_year.classes.Movie;
 import org.lessons.java.best_of_the_year.classes.Song;
@@ -27,12 +26,7 @@ public class PageController {
     public String song(Model model) {
 
         List<Song> songs = getBestSong();
-
-        String songTitles = songs.stream()
-                .map(Song::getTitle)
-                .collect(Collectors.joining(",  "));
-
-        model.addAttribute("songTitles", songTitles);
+        model.addAttribute("songs", songs);
         return "song";
     }
 
@@ -53,6 +47,14 @@ public class PageController {
         return "song-by-id";
     }
 
+    @GetMapping("/movie")
+    public String getMovies(Model model) {
+        List<Movie> movies = getBestMovies();
+        model.addAttribute("movies", movies);
+
+        return "movie";
+    }
+
     @GetMapping("/movies/{id}")
     public String getMovieById(@PathVariable int id, Model model) {
         List<Movie> movies = getBestMovies();
@@ -69,19 +71,6 @@ public class PageController {
         }
 
         return "movie-by-id";
-    }
-
-    @GetMapping("/movie")
-    public String getMovies(Model model) {
-        List<Movie> movies = getBestMovies();
-
-        String movieTitles = movies.stream()
-                .map(Movie::getTitle)
-                .collect(Collectors.joining(", "));
-
-        model.addAttribute("movieTitles", movieTitles);
-
-        return "movie";
     }
 
     private List<Movie> getBestMovies() {
