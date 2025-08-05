@@ -1,4 +1,4 @@
-package org.lessons.java.best_of_the_year.controller;
+package org.lessons.java.best_of_the_year.classes;
 
 public class Song {
     private String title;
