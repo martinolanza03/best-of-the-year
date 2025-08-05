@@ -17,7 +17,7 @@ public class PageController {
     }
 
     @GetMapping("/song")
-    public String Song(Model model) {
+    public String song(Model model) {
         return "song";
     }
 
