@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.lessons.java.best_of_the_year.classes.Movie;
 import org.lessons.java.best_of_the_year.classes.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,27 @@ public class PageController {
 
         model.addAttribute("songTitles", songTitles);
         return "song";
+    }
+
+    @GetMapping("/movie")
+    public String getMovies(Model model) {
+        List<Movie> movies = getBestMovies();
+
+        String movieTitles = movies.stream()
+                .map(Movie::getTitle)
+                .collect(Collectors.joining(", "));
+
+        model.addAttribute("movieTitles", movieTitles);
+
+        return "movie";
+    }
+
+    private List<Movie> getBestMovies() {
+        return Arrays.asList(
+                new Movie("Inception", 1),
+                new Movie("Interstellar", 2),
+                new Movie("Matrix", 3),
+                new Movie("Ratatouille", 4));
     }
 
     private List<Song> getBestSong() {
