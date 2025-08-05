@@ -7,8 +7,12 @@
 </head>
 
 <body>
-    <h1>Migliori Film</h1>
-    <p th:text="${movieTitles}">Lista Film</p>
+    <h1>I migliori film:</h1>
+    <ul>
+        <li th:each="movie : ${movies}">
+            <span th:text="${movie.title}"></span>
+        </li>
+    </ul>
 </body>
 
 </html>

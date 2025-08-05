@@ -7,8 +7,12 @@
 </head>
 
 <body>
-    <h1>Migliori Canzoni</h1>
-    <p th:text="${songTitles}">Lista canzoni</p>
+    <h1>Le migliori canzoni:</h1>
+    <ul>
+        <li th:each="song : ${songs}">
+            <span th:text="${song.title}"></span> (ID: <span th:text="${song.id}"></span>)
+        </li>
+    </ul>
 </body>
 
 </html>
