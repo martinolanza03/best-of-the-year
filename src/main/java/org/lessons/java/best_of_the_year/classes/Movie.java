@@ -1,6 +1,8 @@
 package org.lessons.java.best_of_the_year.classes;
 
-public class Movie {
+import java.io.Serializable;
+
+public class Movie implements Serializable {
     private String title;
     private int id;
 
@@ -13,11 +15,11 @@ public class Movie {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setTitle(String title) {
