@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Best of</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Fragment: nav -->
+    <div th:fragment="nav">
+        <div class="container mt-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+                <h4>Best of</h4>
+                <div>
+                    <a th:href="@{/movie}" class="btn btn-outline-primary me-2"
+                        th:classappend="${activePage == 'movies'} ? ' active' : ''">Movies</a>
+                    <a th:href="@{/song}" class="btn btn-outline-primary"
+                        th:classappend="${activePage == 'songs'} ? ' active' : ''">Songs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fragment: footer -->
+    <div th:fragment="footer">
+        <!-- Bootstrap JS Bundle (con Popper) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+</body>
+
+</html>

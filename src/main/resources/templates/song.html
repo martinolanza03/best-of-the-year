@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Song</title>
-</head>
+<head th:replace="fragments/fragments :: head"></head>
 
 <body>
-    <h1>Le migliori canzoni:</h1>
-    <ul>
-        <li th:each="song : ${songs}">
-            <span th:text="${song.title}"></span> (ID: <span th:text="${song.id}"></span>)
-        </li>
-    </ul>
+
+    <!-- Navbar -->
+    <div th:replace="fragments/fragments :: nav"></div>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Best Songs</h2>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <!-- Ciclo su tutte le canzoni -->
+            <div th:each="song : ${songs}" class="btn btn-light border">
+                <span th:text="${song.title}">Song Title</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="fragments/fragments :: footer"></div>
+
 </body>
 
 </html>

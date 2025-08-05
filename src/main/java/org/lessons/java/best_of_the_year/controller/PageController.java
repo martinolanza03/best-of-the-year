@@ -27,6 +27,7 @@ public class PageController {
 
         List<Song> songs = getBestSong();
         model.addAttribute("songs", songs);
+        model.addAttribute("activePage", "songs");
         return "song";
     }
 
@@ -51,7 +52,7 @@ public class PageController {
     public String getMovies(Model model) {
         List<Movie> movies = getBestMovies();
         model.addAttribute("movies", movies);
-
+        model.addAttribute("activePage", "movies");
         return "movie";
     }
 
