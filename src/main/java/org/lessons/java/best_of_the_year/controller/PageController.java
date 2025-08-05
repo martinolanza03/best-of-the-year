@@ -53,6 +53,24 @@ public class PageController {
         return "song-by-id";
     }
 
+    @GetMapping("/movies/{id}")
+    public String getMovieById(@PathVariable int id, Model model) {
+        List<Movie> movies = getBestMovies();
+
+        Movie movie = movies.stream()
+                .filter(m -> m.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (movie != null) {
+            model.addAttribute("title", movie.getTitle());
+        } else {
+            model.addAttribute("title", "Film non trovato");
+        }
+
+        return "movie-by-id";
+    }
+
     @GetMapping("/movie")
     public String getMovies(Model model) {
         List<Movie> movies = getBestMovies();
