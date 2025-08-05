@@ -10,9 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class PageController {
 
-    @GetMapping("home")
+    @GetMapping("/home")
     public String greeting(@RequestParam(name = "name") String name, Model model) {
         model.addAttribute("name", name);
         return "home";
     }
+
+    @GetMapping("/song")
+    public String Song(Model model) {
+        return "song";
+    }
+
 }
